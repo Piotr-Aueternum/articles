@@ -1,16 +1,27 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import Article from './Article';
+import Articles from './Articles';
 
 const placeholder = { url: 'http://via.placeholder.com/350x150', author: 'Author' };
-const article = { title: 'Test article', src: 'Test.pl', img: placeholder };
+
+const data = [{
+  id: 1,
+  title: 'Test article',
+  src: 'Test.pl',
+  img: placeholder,
+}, {
+  id: 2,
+  title: 'Test2 article',
+  src: 'Test.pld',
+  img: placeholder,
+}];
 
 const App = () => (
   <div>
     <Helmet>
       <title>Articles</title>
     </Helmet>
-    <Article title={article.title} src={article.src} img={article.img} />
+    <Articles data={data} />
   </div>
 );
 

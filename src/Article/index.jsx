@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Article.scss';
 
 const propTypes = {
   title: PropTypes.string.isRequired,
@@ -15,7 +16,7 @@ const defaultProps = {
 };
 
 const Article = ({ title, tags, src, img }) => (
-  <div>
+  <div className="Article">
     <h1>{title}</h1>
     <ul>{tags.map(tag => tag)}</ul>
     <img alt="" src={img.url} />
