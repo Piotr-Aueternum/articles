@@ -19,7 +19,7 @@ const Article = ({ title, tags, src, img }) => (
   <div className="Article">
     <h1>{title}</h1>
     <ul>{tags.map(tag => tag)}</ul>
-    <img alt="" src={img.url} />
+    <img className="Article__image" alt="" src={img.url} />
     <div>{img.author}</div>
     <div>{src}</div>
   </div>

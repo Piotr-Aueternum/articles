@@ -1,3 +1,6 @@
 .Article {
   background-color: #ddd;
+  &__image {
+    width: 100%;
+  }
 }
