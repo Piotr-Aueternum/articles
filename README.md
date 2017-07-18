@@ -14,6 +14,11 @@ Simple Article list
   ```
 
 # Production
+## Build
   ```
   npm run build:dist
+  ```
+## Server
+  ```
+  npm run build:server
   ```

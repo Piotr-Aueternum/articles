@@ -1,15 +1,38 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import Articles from '../Articles';
-import Data from '../data.json';
 import './App.scss';
+import { getArticles } from '../services';
+import ArticlePage from '../ArticlePage';
 
-const { data: { articles } } = Data;
-
-const App = () => (
-  <div className="App">
-    <Articles data={articles} />
-  </div>
-);
-
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      data: [],
+    };
+  }
+  componentDidMount() {
+    getArticles()
+      .then((res) => {
+        const { data: { articles: data } } = res;
+        this.setState({ data });
+      });
+  }
+  render() {
+    const { data } = this.state;
+    return (
+      <div className="App">
+        <h1>Aritcles</h1>
+        <Switch>
+          <Route path="/article/:id" component={ArticlePage} />
+          <Route exact path="/">
+            <Articles data={data} />
+          </Route>
+        </Switch>
+      </div>
+    );
+  }
+}
 
 export default App;

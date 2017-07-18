@@ -18,7 +18,7 @@ const Articles = ({ data }) => (
         const { title, src, img, id } = article;
         return (
           <li key={id}>
-            <Article title={title} src={src} img={img} />
+            <Article title={title} id={id} src={src} img={img} />
           </li>
         );
       })}

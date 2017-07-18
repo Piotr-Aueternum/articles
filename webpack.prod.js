@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AppCachePlugin = require('appcache-webpack-plugin');
+const BabiliPlugin = require('babili-webpack-plugin');
 
 module.exports = {
   entry: ['babel-polyfill', path.join(__dirname, 'src', 'index.jsx')],
@@ -39,13 +40,12 @@ module.exports = {
         NODE_ENV: '"production"',
       },
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      warnings: false,
-      screw_ie8: true,
+    new BabiliPlugin({
+      mangle: true,
+      deadcode: true,
     }),
     new AppCachePlugin({
       network: ['*'],
-      fallback: ['. offline.html'],
       settings: ['prefer-online'],
       output: 'cache.manifest',
     }),
