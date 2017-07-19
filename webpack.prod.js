@@ -3,6 +3,9 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AppCachePlugin = require('appcache-webpack-plugin');
 const BabiliPlugin = require('babili-webpack-plugin');
+require('dotenv').config();
+
+const { PROD_URL } = process.env;
 
 module.exports = {
   entry: ['babel-polyfill', path.join(__dirname, 'src', 'index.jsx')],
@@ -38,6 +41,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"',
+        PROD_URL: `"${PROD_URL}"`,
       },
     }),
     new BabiliPlugin({

@@ -4,7 +4,7 @@ const AppCachePlugin = require('appcache-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 require('dotenv').config();
 
-const { LAN } = process.env;
+const { LAN, PROD_URL } = process.env;
 
 module.exports = {
   entry: ['babel-polyfill', path.join(__dirname, 'src', 'index.jsx')],
@@ -44,6 +44,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"development"',
+        PROD_URL: `"${PROD_URL}"`,
       },
     }),
     new AppCachePlugin({
