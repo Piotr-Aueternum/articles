@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const AppCachePlugin = require('appcache-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 require('dotenv').config();
 
@@ -8,7 +9,9 @@ const { LAN } = process.env;
 module.exports = {
   entry: ['babel-polyfill', path.join(__dirname, 'src', 'index.jsx')],
   output: {
-    publicPath: 'src/',
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.js',
+    publicPath: 'dist/',
   },
   module: {
     rules: [{
@@ -42,6 +45,11 @@ module.exports = {
       'process.env': {
         NODE_ENV: '"development"',
       },
+    }),
+    new AppCachePlugin({
+      network: ['*'],
+      settings: ['prefer-online'],
+      output: 'cache.manifest',
     }),
   ],
 };

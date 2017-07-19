@@ -6,7 +6,7 @@ import { createStore, applyMiddleware } from 'redux';
 import App from './App';
 import reducer from './reducers';
 import localStorage from './localStorage';
-import setLocalStorage from './services';
+import { setLocalStorage } from './services';
 
 let storageState;
 if (localStorage()) {

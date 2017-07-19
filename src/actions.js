@@ -1,2 +1,8 @@
-export const UPDATE_DATA = Symbol('UPDATE_DATA');
-export default { UPDATE_DATA };
+import { UPDATE_DATA } from './constans';
+
+export const updateArticles = payload => ({
+  type: UPDATE_DATA,
+  payload,
+});
+
+export default { updateArticles };

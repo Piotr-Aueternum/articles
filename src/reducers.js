@@ -1,15 +1,15 @@
-import * as a from './actions';
+import * as c from './constans';
 
 const initialState = {
   data: [],
 };
 
-export default function (state = initialState, action) {
+export default (state = initialState, action) => {
   switch (action.type) {
-    case a.UPDATE_DATA: {
-      return { ...state, state: action.payload };
+    case c.UPDATE_DATA: {
+      return { data: action.payload };
     }
     default:
       return state;
   }
-}
+};

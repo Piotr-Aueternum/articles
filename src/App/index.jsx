@@ -23,7 +23,6 @@ class App extends React.Component {
     const { data } = this.state;
     return (
       <div className="App">
-        <h1>Aritcles</h1>
         <Switch>
           <Route path="/article/:id" component={ArticlePage} />
           <Route exact path="/">
